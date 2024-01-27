@@ -1,0 +1,165 @@
+# find hardware modEl information
+sudo dmidecode -t
+sudo lspci
+# =======================================================================
+
+# open tty and kill hung processes
+Ctrl + Alt + F3 to F6
+top -n 1
+pkill [xxxx]
+Ctrl + Alt + F7
+# =======================================================================
+
+# installing nvidia driver
+apt install linux-headers-amd64
+
+# add "contrib", "non-free" and "non-free-firmware" components to /etc/apt/sources.list
+deb http://deb.debian.org/debian/ sid main contrib non-free non-free-firmware
+
+apt update
+apt install nvidia-driver firmware-misc-nonfree
+reboot
+
+# check driver installation
+nvidia-smi
+# =======================================================================
+
+# sensor modules control
+sudo nano /etc/modules
+# =======================================================================
+
+# fixing dual boot local time not in sync issue
+# change linux to use/store local time in mobo instead of utc
+timedatectl set-local-rtc 1 --adjust-system-clock
+# =======================================================================
+
+# adding user centric global bash functions
+nano ~/.bashrc
+source ~/.bashrc #run this after saving changes in the .bashrc file so the new changes takes effect immediately
+
+# example bash function script to decode and output URL query string param=values
+function custom_split_url() {
+    printf "\n"
+    printf "Splitting URL into query string param=value and URL decoding all values. Here are the results:"
+    printf "\n\n"
+
+    # Function to URL decode a string
+    urldecode() {
+        local url_encoded="${1//+/ }"
+        printf '%b' "${url_encoded//%/\\x}"
+    }
+
+    # Function to add color to parameter names and subparameter names
+    add_color() {
+        local color_param="\033[0;33m"      # Yellow color for parameter names
+        local color_subparam="\033[0;36m"   # Blue color for subparameter names
+        local reset="\033[0m"               # Reset color
+
+        if [[ $2 == "subparam" ]]; then
+            printf "${color_subparam}%s${reset}" "$1"
+        else
+            printf "${color_param}%s${reset}" "$1"
+        fi
+    }
+
+    # Input URL
+    input_url="$1"
+
+    # Extract parameters after "?" and decode them
+    params=$(awk -F'[?&]' '{for(i=2;i<=NF;i++) {split($i, a, "="); printf("%s=%s\n", a[1], a[2])}}' <<< "$input_url")
+
+    # Decode each parameter and print in a table format
+    while read -r line; do
+        param_name=$(cut -d'=' -f1 <<< "$line")
+        param_value=$(cut -d'=' -f2- <<< "$line")
+        
+        # Split parameter value by commas and then decode individual values
+        IFS=',' read -r -a values <<< "$(urldecode "$param_value")"
+        for value in "${values[@]}"; do
+            decoded_value=$(urldecode "$value")
+            
+            # Split subvalues by '&' sign and output each on a new line
+            IFS='&' read -r -a subvalues <<< "$decoded_value"
+            for subvalue in "${subvalues[@]}"; do
+                IFS='=' read -r subparam_name subparam_value <<< "$subvalue"
+                if [[ $subvalue == *"="* ]]; then
+                    printf "%-35s %-35s\n" "$(add_color "$param_name" "param")" "$(add_color "$subparam_name" "subparam")=$subparam_value"
+                else
+                    printf "%-35s %-35s\n" "$(add_color "$param_name" "param")" "$subvalue"
+                fi
+            done
+        done
+    done <<< "$params"
+
+    printf "\n"
+}
+# =======================================================================
+
+# starting a VirtualBox VM with a shortcut.
+#keyboard shortcut: bash /home/lin/bin/autostartvm.sh
+
+# autostartvm.sh file. look into passing vm name as argument instead of hardcoding it
+#!/bin/bash
+
+# Global variables, DESIRED_WORKSPACE=2 means the window will move to Workspace #3 in your list
+DESIRED_VMNAME="win11preview"
+DESIRED_WORKSPACE=2
+
+# Start the VirtualBox VM
+VBoxManage startvm $DESIRED_VMNAME
+
+# Wait for the VM window to appear (adjust sleep duration as needed)
+sleep 1
+
+# Find the window ID of the VM window
+VM_WINDOW_ID=$(wmctrl -l | grep $DESIRED_VMNAME | awk '{print $1}')
+
+# Move the VM window to the desired workspace
+wmctrl -i -r $VM_WINDOW_ID -t $DESIRED_WORKSPACE
+# =======================================================================
+
+# i3 
+
+# app commands to be used in i3 window manager if needed
+xed # text editor
+VirtualBox #vm manager
+code #vs code
+konsole #terminal
+nemo #file manager, LMDE6
+gnome-calculator
+
+# switch monitors to the correct positioning
+xrandr --output DP-5 --auto --right-of DP-3
+sudo apt install lxappearance gtk-chtheme
+# =======================================================================
+
+# docker management
+
+# add current user to docker group
+sudo usermod -aG docker $USER
+# manage docker images and containers
+docker ps -a # list containers
+docker images -a # list images
+docker rm [container_name] # remove docker container
+docker rmi [image_name] # remove docker image
+# =======================================================================
+
+# formating and mounting new sata drive / disk
+
+# list all detected disks
+sudo fdisk -l
+
+# create / delete parition
+sudo cfdisk
+
+# format disk
+sudo mkfs.ext4 /dev/sda #drive name may be different
+# =======================================================================
+
+# disabling mouse pointer acceleration 
+
+open and edit /usr/share/X11/xorg.conf.d/40-libinput.conf as root
+add the following line under pointer and touchpad sections:
+
+    Option "AccelProfile" "flat"
+# =======================================================================
