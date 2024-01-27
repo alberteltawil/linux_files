@@ -10,6 +10,7 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
+set $alt Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -259,11 +260,11 @@ gaps outer 0
 bindsym $mod+x exec i3lock -c 000000
 
 # custom app bindings
-bindsym $mod+b exec brave-browser
-bindsym $mod+c exec code
-bindsym $mod+Shift+w exec microsoft-edge-stable --profile-directory="Profile 1"
-bindsym $mod+Shift+p exec microsoft-edge-stable --profile-directory="Default"
-bindsym $mod+Shift+f exec nemo
+bindsym Control+$alt+b exec brave-browser
+bindsym Control+$alt+c exec code
+bindsym Control+$alt+w exec microsoft-edge-stable --profile-directory="Profile 1"
+bindsym Control+$alt+p exec microsoft-edge-stable --profile-directory="Default"
+bindsym Control+$alt+f exec nemo
 
 # player control bindings (make sure to install playerctl)
 bindsym XF86AudioPlay exec playerctl play-pause
