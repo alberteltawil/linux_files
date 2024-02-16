@@ -163,3 +163,8 @@ add the following line under pointer and touchpad sections:
 
     Option "AccelProfile" "flat"
 # =======================================================================
+
+# i3wm dependencies
+i3blocks
+jq
+feh
