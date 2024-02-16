@@ -227,8 +227,8 @@ default_border pixel 3
 bar {
     id bar-1
     output DP-5
-    # status_command i3status -c /home/lin/.config/i3/i3status.conf
-    status_command i3blocks -c /home/lin/.config/i3blocks/i3blocks_primary.conf
+    # status_command i3status -c $HOME/.config/i3/i3status.conf
+    status_command i3blocks -c $HOME/.config/i3blocks/i3blocks_primary.conf
     #font pango:DejaVu Sans Mono, Terminus Semi-Condensed 10
     font pango:Ubuntu 11
     position top
@@ -255,8 +255,8 @@ bar {
     id bar-2
     output DP-3
     output DP-1
-    # status_command i3status -c /home/lin/.config/i3/i3status.conf
-    status_command i3blocks -c /home/lin/.config/i3blocks/i3blocks_secondary.conf
+    # status_command i3status -c $HOME/.config/i3/i3status.conf
+    status_command i3blocks -c $HOME/.config/i3blocks/i3blocks_secondary.conf
     #font pango:DejaVu Sans Mono, Terminus Semi-Condensed 10
     font pango:Ubuntu 11
     position top
@@ -319,4 +319,4 @@ exec --no-startup-id i3-msg restart
 #exec --no-startup-id feh --bg-scale --no-xinerama ~/Pictures/Backgrounds/TripleMonitor/triple_rog_logo.jpg
 
 # start picom window compositor
-exec --no-startup-id picom --config ~/.config/picom/picom.conf
+#exec --no-startup-id picom --config ~/.config/picom/picom.conf

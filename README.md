@@ -18,7 +18,6 @@ pkill [xxxx]
 # switch to graphical mode from ttyl
 Ctrl + Alt + F7
 ```
-
 ## Installing nVidia driver on Debian based distributions
 Check for any Linux header updates first and update the system before proceeding
 ```bash
