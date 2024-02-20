@@ -255,9 +255,9 @@ gaps outer 0
 
 # custom app bindings
 bindsym Control+$alt+b exec brave-browser
-bindsym Control+$alt+c exec code --new-window
-#bindsym Control+$alt+w exec microsoft-edge-stable --profile-directory="Profile 1"
-#bindsym Control+$alt+p exec microsoft-edge-stable --profile-directory="Default"
+bindsym Control+$alt+c exec code --new-window --password-store="gnome-libsecret"
+bindsym Control+$alt+w exec brave-browser --profile-directory="Profile 1"
+bindsym Control+$alt+p exec brave-browser --profile-directory="Default"
 bindsym Control+$alt+f exec thunar
 bindsym Print exec ksnip --current
 
