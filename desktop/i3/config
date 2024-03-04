@@ -53,7 +53,7 @@ tiling_drag modifier titlebar
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
 # start file manager
-bindsym $mod+n exec nemo
+bindsym $mod+t exec thunar
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -285,11 +285,12 @@ bindsym $mod+x exec i3lock -c 000000
 
 # custom app bindings
 bindsym Control+$alt+b exec brave-browser
-bindsym Control+$alt+c exec code
+bindsym Control+$alt+c exec code --new-window --password-store="gnome-libsecret"
 bindsym Control+$alt+w exec brave-browser --profile-directory="Profile 1"
 bindsym Control+$alt+p exec brave-browser --profile-directory="Default"
 bindsym Control+$alt+f exec nemo
-bindsym $mod+Print exec --no-startup-id ksnip --rectarea
+bindsym $mod+Shift+Print exec --no-startup-id ksnip --rectarea
+bindsym $mod+Print exec --no-startup-id ksnip --current
 
 # player control bindings (make sure to install playerctl)
 bindsym XF86AudioPlay exec playerctl play-pause
@@ -302,7 +303,7 @@ bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
 
 # window client color
 # class                 border  backgr. text    indicator child_border
-client.focused          #0070BC #0070BC #F3F3F3 #2e9ef4   #0070BC
+client.focused          #A400D8 #A400D8 #F3F3F3 #A400D8   #A400D8
 client.focused_inactive #6C6C6C #6C6C6C #ffffff #484e50   #6C6C6C
 client.unfocused        #333333 #222222 #888888 #292d2e   #333333
 client.urgent           #2f343a #900000 #ffffff #900000   #900000

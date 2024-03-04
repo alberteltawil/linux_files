@@ -18,21 +18,26 @@ pkill [xxxx]
 # switch to graphical mode from ttyl
 Ctrl + Alt + F7
 ```
-## Installing nVidia driver on Debian based distributions
+## Installing Nvidia driver on Debian based distributions
+Follow [Debian's wiki page](https://wiki.debian.org/NvidiaGraphicsDrivers) on how to properly install the correct Nvidia driver for your card. The following are the primary simple steps to achieve it for most modern cards.
+
 Check for any Linux header updates first and update the system before proceeding
 ```bash
 apt install linux-headers-amd64
 ```
 
-Add `contrib`, `non-free` and `non-free-firmware` components to `/etc/apt/sources.list`. Then run an update, install the necessary packages and reboot.
+Add `contrib`, `non-free` and `non-free-firmware` components to `/etc/apt/sources.list`. 
 ```bash
 deb http://deb.debian.org/debian/ sid main contrib non-free non-free-firmware
-apt update
-apt install nvidia-driver firmware-misc-nonfree
-reboot
+```
+Then run an update, install the necessary packages and reboot.
+```
+sudo apt update
+sudo apt install nvidia-driver firmware-misc-nonfree
+systemctrl reboot
 ```
 
-After the installation is complete and the system reboots, check if the nVidia driver is running.
+After the installation is complete and the system reboots, check if the Nvidia driver is running.
 ```bash
 nvidia-smi
 ```
