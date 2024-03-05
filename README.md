@@ -194,6 +194,26 @@ sudo cfdisk
 sudo mkfs.ext4 /dev/sda
 ```
 
+## Mounting a secondary drive
+You'll need to create a mounting point for the new drive. To do that, you need to create a directory for the drive and reference it as a mounting point to the drive's UUID in `fstab`.
+```bash
+# create a mounting point
+sudo mkdir /mnt/backup_drive
+
+# check if the drive is detected
+sudo lsblk
+
+# get the drive's UUID
+sudo blkid
+
+# add a mounting line in fstab. example line below: 
+# UUID="6EE6F9AB2ADC4697"    /mnt/backup_drive    ntfs    default 0 0
+sudo nano /etc/fstab
+
+# reboot system
+systemctrl reboot
+```
+
 ## Mouse pointer acceleration
 Some Linux/GNU distributions may default to enabling mouse pointer acceleration depending on your mouse/touchpad hardware. The following instructions will help disabling it as there is no graphical option to do it. 
 * Edit the file `/usr/share/X11/xorg.conf.d/40-libinput.conf` as root using your favourite text editor.
