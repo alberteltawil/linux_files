@@ -50,9 +50,11 @@ sudo nano /etc/modules
 
 
 ## Local time issue with dual boot (Windows/Linux)
-The local time seems to be inconsistent when switching between Windows and Linux. Running the following command on the Linux/GNU OS will fix the local time-sync issue. It will force Linux/GNU to store and use local time in the motherboard instead of using UTC.
+The local time seems to be inconsistent when switching between Windows and Linux. Running the following command on the Linux/GNU OS will fix the local time-sync issue.
 ```bash
-timedatectl set-local-rtc 1 --adjust-system-clock
+sudo apt install ntpdate
+sudo apt install ntp
+sudo systemctl start ntpd
 ```
 
 ## Custom bash functions 
