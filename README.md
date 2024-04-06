@@ -236,3 +236,12 @@ Some Linux/GNU distributions may default to enabling mouse pointer acceleration 
             Option "AccelProfile" "flat"
     EndSection
     ```
+## Turning off wifi
+The following commands will toggle wifi radio on/off if you want to simply rely  primarily on a wired ethernet connection.
+```bash
+# turning off wifi radio
+nmcli radio widi off
+
+# turning on wifi radio
+nmcli radio wifi on
+```
