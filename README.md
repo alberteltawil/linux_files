@@ -58,7 +58,7 @@ sudo systemctl start ntpd
 ```
 
 ## Custom bash functions 
-Sometimes you want to create and use custom functions globally in terminal. 
+Sometimes you want to create and use custom functions globally in terminal. You can also reference (this "bash bible" on GitHub)[https://github.com/dylanaraps/pure-bash-bible] for more useful scripts.
 * Edit the `~/.bashrc` file with your favourite text editor
     ```bash
     nano ~/.bashrc
