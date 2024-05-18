@@ -43,7 +43,46 @@ If there are any modules you need to run at boot time (for instnance sensor cont
 sudo nano /etc/modules
 ```
 
+## Common Neovim shortcuts
 
+```
+/ - search
+dd - delete whole line
+x - deletes a character
+i - insert mode
+Ctrl + o -  go back
+0 - beginning of line
+$ - end of line
+% - toggle matching  ) } ]
+:s - substitude word in a line (ex. :S/thee/the/g), g denotes globally in the line
+:%s/old/new/gc - substitude a word globally (replace)
+G - go to end of file
+gg - go to beginning of file
+/ - search forward
+? - search backwards
+:! - execute command
+:w filename - saves a file with that name
+o - inserts a new line
+e - move one word at a time to the right
+a - append text instead of inserting where the cursor is
+v - start visual mode to highly text
+y - yank (copy)
+p - put (paste)
+:e - open file
+:bn - buffer next
+:bp - buffer previous
+:e . - opens file explorer
+:terminal - opens terminal
+:split | terminal - open terminal window horizontally
+:belowright split resize 10  terminal - opens terminal bottom half of screen
+:resize 10 - resizes a window to a number of lines (-10 removes lines)
+Ctrl \ + Ctrl N - back to normal mode 
+Ctrl W + J or K - moves focus from window top or to bottom
+:bd - close a buffer
+Ctrl + ^ - toggle between previous and next buffer
+:close - closes the buffer in focus
+
+```
 ## Local time issue with dual boot (Windows/Linux)
 The local time seems to be inconsistent when switching between Windows and Linux. Running the following command on the Linux/GNU OS will fix the local time-sync issue. It will force Linux/GNU to store and use local time in the motherboard instead of using UTC.
 ```bash
