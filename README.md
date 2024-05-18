@@ -50,45 +50,45 @@ sudo nano /etc/modules
 
 ## Common Neovim shortcuts
 
-```
-/ - search
-dd - delete whole line
-x - deletes a character
-i - insert mode
-Ctrl + o -  go back
-Ctrl + i - go forward
-0 - beginning of line
-$ - end of line
-% - toggle matching  ) } ]
-:s - substitude word in a line (ex. :S/thee/the/g), g denotes globally in the line
-:%s/old/new/gc - substitude a word globally (replace)
-G - go to end of file
-gg - go to beginning of file
-/ - search forward
-? - search backwards
-:! - execute command
-:w filename - saves a file with that name
-o - inserts a new line
-e - move one word at a time to the right
-a - append text instead of inserting where the cursor is
-v - start visual mode to highly text
-y - yank (copy)
-p - put (paste)
-:e - open file
-:bn - buffer next
-:bp - buffer previous
-:e . - opens file explorer
-:terminal - opens terminal
-:split | terminal - open terminal window horizontally
-:belowright split resize 10  terminal - opens terminal bottom half of screen
-:resize 10 - resizes a window to a number of lines (-10 removes lines)
-Ctrl \ + Ctrl N - back to normal mode 
-Ctrl W + J or K - moves focus from window top or to bottom
-:bd - close a buffer
-Ctrl + ^ - toggle between previous and next buffer
-:close - closes the buffer in focus
 
-```
+| Shortcut/Command    | Description                |
+| ------------------- | -------------------------- |
+| / | search for a string |
+| dd | deletes a while line |
+| x | deletes a character |
+| i | go into insert mode |
+| Ctrl + O | navigate back |
+| Ctrl + I | navigate forward |
+| Ctrl + ^ | toggle between next/previous buffer |
+| 0 | beginning of line |
+| $ | end of line |
+| % | toggle matching ) } ] |
+| :s | substitude word in a line  |
+| :%s/old/new/gc | replace a word globally    |
+| G | go to end of file |
+| gg | go to beginning of file |
+| :! | execute command |
+| :w | save file |
+| :w myfilename | saves files with name |
+| o | inserts a new line |
+| e | move to next word |
+| a | append to text |
+| v | visual mode, highlight |
+| y | yank (copy) |
+| p | past (put) |
+| :e | open file |
+| :e . | open file explorer |
+| :bn | next buffer |
+| :bp | previous buffer |
+| :terminal | opens default terminal |
+| :split | opens file in split window
+| :resize 20 | resizes window rows |
+| Ctrl + \\, Ctrl + N | back to normal mode |
+| Ctrl + W, arrows | move focus between windows |
+| :bd | deletes/removes a buffer within a window |
+| :close | deletes/removes all buffers within a window |
+
+
 ## Local time issue with dual boot (Windows/Linux)
 The local time seems to be inconsistent when switching between Windows and Linux. Running the following command on the Linux/GNU OS will fix the local time-sync issue.
 ```bash
