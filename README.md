@@ -18,21 +18,26 @@ pkill [xxxx]
 # switch to graphical mode from ttyl
 Ctrl + Alt + F7
 ```
-## Installing nVidia driver on Debian based distributions
+## Installing Nvidia driver on Debian based distributions
+Follow [Debian's wiki page](https://wiki.debian.org/NvidiaGraphicsDrivers) on how to properly install the correct Nvidia driver for your card. The following are the primary simple steps to achieve it for most modern cards.
+
 Check for any Linux header updates first and update the system before proceeding
 ```bash
 apt install linux-headers-amd64
 ```
 
-Add `contrib`, `non-free` and `non-free-firmware` components to `/etc/apt/sources.list`. Then run an update, install the necessary packages and reboot.
+Add `contrib`, `non-free` and `non-free-firmware` components to `/etc/apt/sources.list`. 
 ```bash
 deb http://deb.debian.org/debian/ sid main contrib non-free non-free-firmware
-apt update
-apt install nvidia-driver firmware-misc-nonfree
-reboot
+```
+Then run an update, install the necessary packages and reboot.
+```
+sudo apt update
+sudo apt install nvidia-driver firmware-misc-nonfree
+systemctrl reboot
 ```
 
-After the installation is complete and the system reboots, check if the nVidia driver is running.
+After the installation is complete and the system reboots, check if the Nvidia driver is running.
 ```bash
 nvidia-smi
 ```
@@ -84,13 +89,15 @@ Ctrl + ^ - toggle between previous and next buffer
 
 ```
 ## Local time issue with dual boot (Windows/Linux)
-The local time seems to be inconsistent when switching between Windows and Linux. Running the following command on the Linux/GNU OS will fix the local time-sync issue. It will force Linux/GNU to store and use local time in the motherboard instead of using UTC.
+The local time seems to be inconsistent when switching between Windows and Linux. Running the following command on the Linux/GNU OS will fix the local time-sync issue.
 ```bash
-timedatectl set-local-rtc 1 --adjust-system-clock
+sudo apt install ntpdate
+sudo apt install ntp
+sudo systemctl start ntpd
 ```
 
 ## Custom bash functions 
-Sometimes you want to create and use custom functions globally in terminal. 
+Sometimes you want to create and use custom functions globally in terminal. You can also reference [this "bash bible" on GitHub](https://github.com/dylanaraps/pure-bash-bible) for more useful scripts.
 * Edit the `~/.bashrc` file with your favourite text editor
     ```bash
     nano ~/.bashrc
@@ -228,6 +235,26 @@ sudo cfdisk
 sudo mkfs.ext4 /dev/sda
 ```
 
+## Mounting a secondary drive
+You'll need to create a mounting point for the new drive. To do that, you need to create a directory for the drive and reference it as a mounting point to the drive's UUID in `fstab`.
+```bash
+# create a mounting point
+sudo mkdir /mnt/backup_drive
+
+# check if the drive is detected
+sudo lsblk
+
+# get the drive's UUID
+sudo blkid
+
+# add a mounting line in fstab. example line below: 
+# UUID="6EE6F9AB2ADC4697"    /mnt/backup_drive    ntfs    default 0 0
+sudo nano /etc/fstab
+
+# reboot system
+systemctrl reboot
+```
+
 ## Mouse pointer acceleration
 Some Linux/GNU distributions may default to enabling mouse pointer acceleration depending on your mouse/touchpad hardware. The following instructions will help disabling it as there is no graphical option to do it. 
 * Edit the file `/usr/share/X11/xorg.conf.d/40-libinput.conf` as root using your favourite text editor.
@@ -248,3 +275,12 @@ Some Linux/GNU distributions may default to enabling mouse pointer acceleration 
             Option "AccelProfile" "flat"
     EndSection
     ```
+## Turning off wifi
+The following commands will toggle wifi radio on/off if you want to simply rely  primarily on a wired ethernet connection.
+```bash
+# turning off wifi radio
+nmcli radio widi off
+
+# turning on wifi radio
+nmcli radio wifi on
+```
