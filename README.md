@@ -56,6 +56,7 @@ dd - delete whole line
 x - deletes a character
 i - insert mode
 Ctrl + o -  go back
+Ctrl + i - go forward
 0 - beginning of line
 $ - end of line
 % - toggle matching  ) } ]
