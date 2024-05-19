@@ -83,6 +83,7 @@ sudo nano /etc/modules
 | :terminal | opens default terminal |
 | :split | opens file in split window
 | :resize 20 | resizes window rows |
+| :botright vertical 80vsplit file.py | open file in new window to the right 80 characters wide |
 | Ctrl + \\, Ctrl + N | back to normal mode |
 | Ctrl + W, arrows | move focus between windows |
 | :bd | deletes/removes a buffer within a window |
