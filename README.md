@@ -74,16 +74,27 @@ Plug 'https://github.com/preservim/tagbar' " Tagbar for code navigation, require
 
 call plug#end()
 
+autocmd VimEnter * botright split | terminal /bin/bash
+autocmd VimEnter * resize 10
 autocmd VimEnter * NERDTree | wincmd p
+autocmd VimEnter * if argc() > 0 | wincmd p | endif
+
+" Forcing focus back to opened file
+autocmd VimEnter * execute "normal \<C-w>\<C-w>"
+
+" Key bindings
 nmap <F8> :TagbarToggle<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 noremap <C-n> :NERDTree<CR>
 
-let g:airline#extensions#tabline#enabled=1
-let g:airline#extensions#tabline#buffer_idx_mode=1
+let mapleader = " "
 let g:airline_detect_paste=1
 let g:airline_theme='dark'
+
+" Show buffer number with file name in airline tab bar
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
 ```
 
 Most common and useful Neovim shortcuts and commands:
