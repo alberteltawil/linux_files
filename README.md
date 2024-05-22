@@ -48,7 +48,7 @@ If there are any modules you need to run at boot time (for instnance sensor cont
 sudo nano /etc/modules
 ```
 
-## Neovim init.vim and commong shortcuts
+## Neovim init.vim and common shortcuts
 Basic init.vim config for a common IDE layout:
 ```
 set number
@@ -61,8 +61,6 @@ set shiftwidth=4
 set smartindent
 set cindent
 
-" :Terminal /bin/bash
-
 call plug#begin()
 
 Plug 'https://github.com/tpope/vim-fugitive' " Git branch info in airline
@@ -72,8 +70,6 @@ Plug 'https://github.com/tpope/vim-commentary'
 Plug 'https://github.com/ap/vim-css-color' " CSS Color Preview
 Plug 'https://github.com/rafi/awesome-vim-colorschemes' " Retro Scheme
 Plug 'https://github.com/preservim/tagbar' " Tagbar for code navigation, requires `apt install exuberant-ctags`
-" Plug 'https://github.com/NeogitOrg/neogit'
-" Plug 'https://github.com/tc50cal/vim-terminal' " Vim Terminal
 
 call plug#end()
 
@@ -91,7 +87,7 @@ nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 noremap <C-n> :NERDTree<CR>
 
-let mapleader = " "
+" let mapleader = "/" " default is /
 let g:airline_detect_paste=1
 let g:airline_theme='dark'
 
