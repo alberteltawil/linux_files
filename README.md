@@ -51,12 +51,15 @@ sudo nano /etc/modules
 ## Neovim init.vim and commong shortcuts
 Basic init.vim config for a common IDE layout:
 ```
-:set number
-:set autoindent
-:set tabstop=4
-:set smarttab
-:set softtabstop=4
-:set mouse=a
+set number
+set autoindent
+set tabstop=4
+set softtabstop=4
+set mouse=a
+set expandtab
+set shiftwidth=4
+set smartindent
+set cindent
 
 " :Terminal /bin/bash
 
