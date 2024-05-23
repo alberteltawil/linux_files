@@ -48,6 +48,18 @@ If there are any modules you need to run at boot time (for instnance sensor cont
 sudo nano /etc/modules
 ```
 
+## Installing fonts
+Download fonts from https://www.nerdfonts.com/font-downloads
+
+Run the following commands:
+```bash
+# copy font files
+sudo cp *.otf /usr/share/fonts/
+
+# update font cache
+sudo fc-cache -fv
+```
+
 ## Neovim init.vim and common shortcuts
 Basic init.vim config for a common IDE layout:
 ```
