@@ -23,7 +23,12 @@ return require('packer').startup(function(use)
       tag = '0.1.7',
       requires = { { 'nvim-lua/plenary.nvim' } }
   }
-  -- My plugins here
+  use {
+        'akinsho/bufferline.nvim', 
+        tag = "*", 
+        requires = 'nvim-tree/nvim-web-devicons'
+  }
+ -- My plugins here
   -- use 'foo1/bar1.nvim'
   -- use 'foo2/bar2.nvim'
 

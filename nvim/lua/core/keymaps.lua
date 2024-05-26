@@ -3,6 +3,7 @@ vim.g.maplocalleader = ' '
 
 -- vim.opt.backspace = '4'
 vim.opt.scroll = 5
+vim.opt.scrolloff = 10
 vim.opt.number = true
 vim.opt.showcmd = true
 vim.opt.laststatus = 2
@@ -17,3 +18,4 @@ vim.opt.shiftround = true
 vim.opt.expandtab = true
 
 vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>')
+vim.keymap.set('n', '<leader>t', ':botright split | terminal<CR>')
