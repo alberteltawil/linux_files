@@ -1,3 +1,10 @@
+## Copy / Sync files between directories
+```bash
+# -a: Archive mode, which preserves symbolic links, permissions, timestamps, and other attributes.
+# --delete: Deletes files in the destination that are not in the source.
+rsync -a --delete /path/to/source/ /path/to/destination/
+```
+
 ## Find hardware information
 ```bash
 sudo dmidecode -t
