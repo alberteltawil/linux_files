@@ -288,6 +288,18 @@ docker rm [container_name]
 
 # remove image (remove associated containers first)
 docker rmi [image_name] # remove docker image
+
+# autorize docker hub
+docker login
+
+# commit container changes to new image
+docker commit <container_id> <new_image_name:tag>
+
+# tag an image to a docker hub repository
+docker tag local_image_name:new_tag docker_hub_username/docker_hub_repository:image_tag
+
+# push docker image to docker hub
+docker push docker_hub_username/docker_hub_repository:image_tag
 ```
 
 ## Drive and disk management
