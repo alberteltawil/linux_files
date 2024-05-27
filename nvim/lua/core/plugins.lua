@@ -12,6 +12,8 @@ end
 local packer_bootstrap = ensure_packer()
 
 return require('packer').startup(function(use)
+  use 'stevearc/aerial.nvim'
+  use 'emmanueltouzery/decisive.nvim'
   use 'wbthomason/packer.nvim'
   use 'ellisonleao/gruvbox.nvim'
   use 'nvim-tree/nvim-tree.lua'
