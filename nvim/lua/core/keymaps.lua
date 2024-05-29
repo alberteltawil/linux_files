@@ -3,7 +3,7 @@ vim.g.maplocalleader = ' '
 
 -- vim.opt.backspace = '4'
 vim.opt.scroll = 5
-vim.opt.scrolloff = 10
+vim.opt.scrolloff = 999
 vim.opt.number = true
 vim.opt.showcmd = true
 vim.opt.laststatus = 2

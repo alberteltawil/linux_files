@@ -12,6 +12,7 @@ end
 local packer_bootstrap = ensure_packer()
 
 return require('packer').startup(function(use)
+  use 'catppuccin/nvim'
   use 'stevearc/aerial.nvim'
   use 'emmanueltouzery/decisive.nvim'
   use 'wbthomason/packer.nvim'
