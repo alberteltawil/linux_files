@@ -289,6 +289,9 @@ docker rm [container_name]
 # remove image (remove associated containers first)
 docker rmi [image_name] # remove docker image
 
+# remove all images without at least one container associated to them
+docker image prune -a
+
 # autorize docker hub
 docker login
 
