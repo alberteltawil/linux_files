@@ -20,6 +20,8 @@ return require('packer').startup(function(use)
   use 'nvim-tree/nvim-web-devicons'
   use 'nvim-lualine/lualine.nvim'
   use 'nvim-treesitter/nvim-treesitter'
+  -- make sure to install ripgrep: sudo apt install ripgrep
+  -- required for telescope
   use {
       'nvim-telescope/telescope.nvim',
       tag = '0.1.7',
