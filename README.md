@@ -303,6 +303,16 @@ docker tag local_image_name:new_tag docker_hub_username/docker_hub_repository:im
 
 # push docker image to docker hub
 docker push docker_hub_username/docker_hub_repository:image_tag
+
+# create docker image based on project Dockerfile
+docker build -t <image_name> .
+
+# run and start docker container; expose port 8080 to the host; mount volume.
+# make sure the mounted volume directories exist in both the container and the host.
+docker run -d -p 8080:8080 --volume $HOME/output:/app/output <image_name>
+
+# access docker container shell in interactive mode
+docker exec -it <container_id> /bin/bash
 ```
 
 ## Drive and disk management
