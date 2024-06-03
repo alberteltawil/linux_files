@@ -1,3 +1,14 @@
+## Convert text files EOF from CRLF to LF (windows to unix)
+```bash
+# make sure to install dos2unix: apt install dos2unix
+# find .: Start the search in the current directory.
+# -type d \( -name node_modules -o -name .git \) -prune: If a directory is named node_modules or .git, exclude it from the search.
+# -o: Logical OR operator to continue the search for other files.
+# -type f: Only consider regular files.
+# -exec dos2unix {} +: Apply dos2unix to each file found.
+find . -type d \( -name node_modules -o -name .git \) -prune -o -type f -exec dos2unix {} +
+```
+
 ## Copy / Sync files between directories
 ```bash
 # -a: Archive mode, which preserves symbolic links, permissions, timestamps, and other attributes.
