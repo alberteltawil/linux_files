@@ -15,20 +15,26 @@ return require('packer').startup(function(use)
     -- themes / colorschemes
     use 'catppuccin/nvim'
     use 'stevearc/aerial.nvim'
-    -- plugins
-    use 'emmanueltouzery/decisive.nvim'
-    use 'wbthomason/packer.nvim'
     use 'ellisonleao/gruvbox.nvim'
-    use 'nvim-tree/nvim-tree.lua'
-    use 'nvim-tree/nvim-web-devicons'
-    use 'nvim-lualine/lualine.nvim'
+    -- lsp plugins
+    -- use {
+    --     'williamboman/mason.nvim',
+    --     'williamboman/mason-lspconfig.nvim',
+    --     'neovim/nvim-lspconfig',
+    -- }
+    -- plugins
+    use 'emmanueltouzery/decisive.nvim' -- csv formatter
+    use 'wbthomason/packer.nvim' -- plugin manager
+    use 'nvim-tree/nvim-tree.lua' -- fancy file explorer
+    use 'nvim-tree/nvim-web-devicons' -- icon support
+    use 'nvim-lualine/lualine.nvim' -- bottom status line
     use 'nvim-treesitter/nvim-treesitter'
-    use {
+    use { -- open files, find text globally
         'nvim-telescope/telescope.nvim',
         tag = '0.1.7',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
-    use {
+    use { -- top tab bar
         'akinsho/bufferline.nvim', 
         tag = "*", 
         requires = 'nvim-tree/nvim-web-devicons'

@@ -43,6 +43,11 @@ vim.opt.shiftwidth = 4
 vim.opt.shiftround = true
 vim.opt.expandtab = true
 
+-- Set GIT_PAGER environment variable to ensure color support in Neovim terminal
+vim.cmd('let $GIT_PAGER="less -R"')
+-- Create a custom command or key mapping for git diff with color
+-- vim.keymap.set('n', '<leader>gd', ':!git diff --color=always<CR>', opts)
+
 -- keymap to clear word highlighting after searching or replacing text
 vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>')
 
