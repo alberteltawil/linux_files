@@ -12,19 +12,16 @@ end
 local packer_bootstrap = ensure_packer()
 
 return require('packer').startup(function(use)
+    -- self managing plugin manager
+    use 'wbthomason/packer.nvim'
+
     -- themes / colorschemes
     use 'catppuccin/nvim'
-    use 'stevearc/aerial.nvim'
     use 'ellisonleao/gruvbox.nvim'
-    -- lsp plugins
-    -- use {
-    --     'williamboman/mason.nvim',
-    --     'williamboman/mason-lspconfig.nvim',
-    --     'neovim/nvim-lspconfig',
-    -- }
+
     -- plugins
+    use 'stevearc/aerial.nvim' -- class and variable outliner
     use 'emmanueltouzery/decisive.nvim' -- csv formatter
-    use 'wbthomason/packer.nvim' -- plugin manager
     use 'nvim-tree/nvim-tree.lua' -- fancy file explorer
     use 'nvim-tree/nvim-web-devicons' -- icon support
     use 'nvim-lualine/lualine.nvim' -- bottom status line
