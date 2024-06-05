@@ -1,3 +1,14 @@
+## Convert text files EOF from CRLF to LF (windows to unix)
+```bash
+# make sure to install dos2unix: apt install dos2unix
+# find .: Start the search in the current directory.
+# -type d \( -name node_modules -o -name .git \) -prune: If a directory is named node_modules or .git, exclude it from the search.
+# -o: Logical OR operator to continue the search for other files.
+# -type f: Only consider regular files.
+# -exec dos2unix {} +: Apply dos2unix to each file found.
+find . -type d \( -name node_modules -o -name .git \) -prune -o -type f -exec dos2unix {} +
+```
+
 ## Copy / Sync files between directories
 ```bash
 # -a: Archive mode, which preserves symbolic links, permissions, timestamps, and other attributes.
@@ -303,6 +314,16 @@ docker tag local_image_name:new_tag docker_hub_username/docker_hub_repository:im
 
 # push docker image to docker hub
 docker push docker_hub_username/docker_hub_repository:image_tag
+
+# create docker image based on project Dockerfile
+docker build -t <image_name> .
+
+# run and start docker container; expose port 8080 to the host; mount volume.
+# make sure the mounted volume directories exist in both the container and the host.
+docker run -d -p 8080:8080 --volume $HOME/output:/app/output <image_name>
+
+# access docker container shell in interactive mode
+docker exec -it <container_id> /bin/bash
 ```
 
 ## Drive and disk management
