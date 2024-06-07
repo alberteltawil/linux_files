@@ -72,12 +72,12 @@ function custom_split_url() {
     while read -r line; do
         param_name=$(cut -d'=' -f1 <<< "$line")
         param_value=$(cut -d'=' -f2- <<< "$line")
-        
+
         # Split parameter value by commas and then decode individual values
         IFS=',' read -r -a values <<< "$(urldecode "$param_value")"
         for value in "${values[@]}"; do
             decoded_value=$(urldecode "$value")
-            
+
             # Split subvalues by '&' sign and output each on a new line
             IFS='&' read -r -a subvalues <<< "$decoded_value"
             for subvalue in "${subvalues[@]}"; do
@@ -118,7 +118,7 @@ VM_WINDOW_ID=$(wmctrl -l | grep $DESIRED_VMNAME | awk '{print $1}')
 wmctrl -i -r $VM_WINDOW_ID -t $DESIRED_WORKSPACE
 # =======================================================================
 
-# i3 
+# i3
 
 # app commands to be used in i3 window manager if needed
 xed # text editor
@@ -156,7 +156,7 @@ sudo cfdisk
 sudo mkfs.ext4 /dev/sda #drive name may be different
 # =======================================================================
 
-# disabling mouse pointer acceleration 
+# disabling mouse pointer acceleration
 
 open and edit /usr/share/X11/xorg.conf.d/40-libinput.conf as root
 add the following line under pointer and touchpad sections:

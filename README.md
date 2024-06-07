@@ -27,7 +27,7 @@ sudo lspci
 # switching between tty terminals
 Ctrl + Alt + F3 to F6
 
-# get top running processes 
+# get top running processes
 top -n 1
 
 # kill a process using a process id
@@ -44,7 +44,7 @@ Check for any Linux header updates first and update the system before proceeding
 apt install linux-headers-amd64
 ```
 
-Add `contrib`, `non-free` and `non-free-firmware` components to `/etc/apt/sources.list`. 
+Add `contrib`, `non-free` and `non-free-firmware` components to `/etc/apt/sources.list`.
 ```bash
 deb http://deb.debian.org/debian/ sid main contrib non-free non-free-firmware
 ```
@@ -175,7 +175,7 @@ sudo apt install ntp
 sudo systemctl start ntpd
 ```
 
-## Custom bash functions 
+## Custom bash functions
 Sometimes you want to create and use custom functions globally in terminal. You can also reference [this "bash bible" on GitHub](https://github.com/dylanaraps/pure-bash-bible) for more useful scripts.
 * Edit the `~/.bashrc` file with your favourite text editor
     ```bash
@@ -224,12 +224,12 @@ Sometimes you want to create and use custom functions globally in terminal. You 
         while read -r line; do
             param_name=$(cut -d'=' -f1 <<< "$line")
             param_value=$(cut -d'=' -f2- <<< "$line")
-            
+
             # Split parameter value by commas and then decode individual values
             IFS=',' read -r -a values <<< "$(urldecode "$param_value")"
             for value in "${values[@]}"; do
                 decoded_value=$(urldecode "$value")
-                
+
                 # Split subvalues by '&' sign and output each on a new line
                 IFS='&' read -r -a subvalues <<< "$decoded_value"
                 for subvalue in "${subvalues[@]}"; do
@@ -351,7 +351,7 @@ sudo lsblk
 # get the drive's UUID
 sudo blkid
 
-# add a mounting line in fstab. example line below: 
+# add a mounting line in fstab. example line below:
 # UUID="6EE6F9AB2ADC4697"    /mnt/backup_drive    ntfs    default 0 0
 sudo nano /etc/fstab
 
@@ -360,7 +360,7 @@ systemctrl reboot
 ```
 
 ## Mouse pointer acceleration
-Some Linux/GNU distributions may default to enabling mouse pointer acceleration depending on your mouse/touchpad hardware. The following instructions will help disabling it as there is no graphical option to do it. 
+Some Linux/GNU distributions may default to enabling mouse pointer acceleration depending on your mouse/touchpad hardware. The following instructions will help disabling it as there is no graphical option to do it.
 * Edit the file `/usr/share/X11/xorg.conf.d/40-libinput.conf` as root using your favourite text editor.
     ```bash
     sudo nano /usr/share/X11/xorg.conf.d/40-libinput.conf

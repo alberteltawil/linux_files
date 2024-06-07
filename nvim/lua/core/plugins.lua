@@ -32,8 +32,8 @@ return require('packer').startup(function(use)
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
     use { -- top tab bar
-        'akinsho/bufferline.nvim', 
-        tag = "*", 
+        'akinsho/bufferline.nvim',
+        tag = "*",
         requires = 'nvim-tree/nvim-web-devicons'
   }
     if packer_bootstrap then
