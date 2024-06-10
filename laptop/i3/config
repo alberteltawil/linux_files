@@ -103,7 +103,7 @@ bindsym $mod+f fullscreen toggle
 # change container layout (stacked, tabbed, toggle split)
 #bindsym $mod+s layout stacking
 #bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+#bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -205,7 +205,7 @@ bindsym $mod+Shift+n exec ~/bin/next-free-workspace.sh
 # Keyboard shortcut to toggle between workspaces on an the active monitor/output
 bindsym $mod+Tab workspace next_on_output
 
-# Automaticly switch back to previous workspace when pressing 
+# Automaticly switch back to previous workspace when pressing
 # the workspace number twice
 workspace_auto_back_and_forth yes
 
@@ -247,8 +247,8 @@ bar {
 }
 
 # Gaps
-gaps inner 15
-gaps outer 0
+# gaps inner 15
+# gaps outer 0
 
 # i3lock shortcut and background color
 #bindsym $mod+x exec i3lock -c 000000
@@ -258,7 +258,10 @@ bindsym Control+$alt+b exec brave-browser
 bindsym Control+$alt+c exec code --new-window --password-store="gnome-libsecret"
 bindsym Control+$alt+w exec brave-browser --profile-directory="Profile 1"
 bindsym Control+$alt+p exec brave-browser --profile-directory="Default"
-bindsym Control+$alt+f exec thunar
+bindsym Control+$alt+n exec mousepad
+
+#bindsym Control+$alt+f exec thunar
+bindsym $mod+e exec thunar
 bindsym Print exec ksnip --current
 
 # player control bindings (make sure to install playerctl)
@@ -282,7 +285,7 @@ client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 exec --no-startup-id numlockx on
 
 # set background image (randomly on startup using script)
-exec --no-startup-id $HOME/bin/randombackground_uw.sh 
+exec --no-startup-id $HOME/bin/randombackground_uw.sh
 exec --no-startup-id i3-msg restart
 
 # set a default background if random background is disabled
