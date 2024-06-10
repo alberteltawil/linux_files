@@ -21,11 +21,28 @@ function _G.move_cursor_down()
     end
 end
 
+-- Remove whitespaces
+function TrimWhitespace()
+    -- Save cursor position and view
+    local save_cursor = vim.fn.getpos(".")
+    local save_view = vim.fn.winsaveview()
+    -- Remove trailing whitespace
+    vim.cmd([[silent! %s/\s\+$//e]])
+    -- Remove spaces from empty lines but keep single empty lines
+    vim.cmd([[silent! %s/^\s*$//e]])
+    -- Restore cursor position and view
+    vim.fn.setpos(".", save_cursor)
+    vim.fn.winrestview(save_view)
+    -- Remove highlighting
+    vim.cmd("nohlsearch")
+end
+
 -- nvim global configurations and option settings
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- vim.opt.backspace = '4'
+vim.opt.clipboard:append("unnamedplus")
 vim.opt.scroll = 5
 vim.opt.scrolloff = 999
 vim.opt.number = true
@@ -51,6 +68,9 @@ vim.cmd('let $GIT_PAGER="less -R"')
 -- keymap to clear word highlighting after searching or replacing text
 vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>')
 
+-- keymap to remove whitespaces
+vim.keymap.set('n', '<Leader>w', ':lua TrimWhitespace()<CR>', opts)
+
 -- keymap for opening bash terminal bottom right of window
 vim.keymap.set('n', '<leader>t', ':botright split | terminal<CR>')
 
@@ -68,3 +88,6 @@ vim.keymap.set('n', '<C-Up>',   '<Cmd>lua _G.move_cursor_up()<CR>', opts)
 vim.keymap.set('n', '<C-Down>', '<Cmd>lua _G.move_cursor_down()<CR>', opts)
 vim.keymap.set('i', '<C-Up>', '<Esc>:lua _G.move_cursor_up()<CR>i', { noremap = true })
 vim.keymap.set('i', '<C-Down>', '<Esc>:lua _G.move_cursor_down()<CR>i', { noremap = true })
+
+-- formatter keymaps
+-- vim.keymap.set('n', '<leader>f', ':Format<CR>', opts)

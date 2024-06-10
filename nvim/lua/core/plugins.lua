@@ -12,26 +12,24 @@ end
 local packer_bootstrap = ensure_packer()
 
 return require('packer').startup(function(use)
-    -- self managing plugin manager
+    -- use 'stevearc/conform.nvim'
     use 'wbthomason/packer.nvim'
 
-    -- themes / colorschemes
+    -- use 'mhartington/formatter.nvim'
     use 'catppuccin/nvim'
+    use 'stevearc/aerial.nvim'
     use 'ellisonleao/gruvbox.nvim'
-
-    -- plugins
-    use 'stevearc/aerial.nvim' -- class and variable outliner
-    use 'emmanueltouzery/decisive.nvim' -- csv formatter
-    use 'nvim-tree/nvim-tree.lua' -- fancy file explorer
-    use 'nvim-tree/nvim-web-devicons' -- icon support
-    use 'nvim-lualine/lualine.nvim' -- bottom status line
+    use 'emmanueltouzery/decisive.nvim'
+    use 'nvim-tree/nvim-tree.lua'
+    use 'nvim-tree/nvim-web-devicons'
+    use 'nvim-lualine/lualine.nvim'
     use 'nvim-treesitter/nvim-treesitter'
-    use { -- open files, find text globally
+    use {
         'nvim-telescope/telescope.nvim',
         tag = '0.1.7',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
-    use { -- top tab bar
+    use {
         'akinsho/bufferline.nvim',
         tag = "*",
         requires = 'nvim-tree/nvim-web-devicons'
