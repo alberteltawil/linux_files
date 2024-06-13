@@ -22,7 +22,7 @@ function _G.move_cursor_down()
 end
 
 -- Remove whitespaces
-function TrimWhitespace()
+function trim_whitespace()
     -- Save cursor position and view
     local save_cursor = vim.fn.getpos(".")
     local save_view = vim.fn.winsaveview()
@@ -69,7 +69,7 @@ vim.cmd('let $GIT_PAGER="less -R"')
 vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>')
 
 -- keymap to remove whitespaces
-vim.keymap.set('n', '<Leader>w', ':lua TrimWhitespace()<CR>', opts)
+vim.keymap.set('n', '<Leader>w', ':lua trim_whitespace()<CR>', opts)
 
 -- keymap for opening bash terminal bottom right of window
 vim.keymap.set('n', '<leader>t', ':botright split | terminal<CR>')
