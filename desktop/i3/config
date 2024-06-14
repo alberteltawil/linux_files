@@ -105,6 +105,7 @@ bindsym $mod+f fullscreen toggle
 #bindsym $mod+w layout tabbed
 bindsym $mod+e exec thunar
 bindsym $mod+s layout toggle split
+ # bindsym $mod+s exec --no-startup-id ~/bin/toggle-window-split.sh
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -204,6 +205,7 @@ workspace $ws3 output DP-1
 
 # Keyboard shortcut to move a window to the next free and available workspace without knowing the number
 bindsym $mod+Shift+n exec ~/bin/next-free-workspace.sh
+# bindsym $mod+t exec ~/bin/toggle_window_layout.sh
 
 # Keyboard shortcut to toggle between workspaces on an the active monitor/output
 bindsym $mod+Tab workspace next_on_output
@@ -292,6 +294,7 @@ bindsym Control+$alt+p exec brave-browser --profile-directory="Default"
 bindsym Control+$alt+f exec nemo
 bindsym $mod+Shift+Print exec --no-startup-id ksnip --rectarea
 bindsym $mod+Print exec --no-startup-id ksnip --current
+bindsym Control+$alt+n exec mousepad
 
 # player control bindings (make sure to install playerctl)
 bindsym XF86AudioPlay exec playerctl play-pause
@@ -318,6 +321,8 @@ exec --no-startup-id numlockx on
 exec --no-startup-id $HOME/bin/randombackground_uw.sh 
 exec --no-startup-id i3-msg restart
 
+# enable authentication gui 
+# (make sure to install lxpolkit first: sudo apt install lxpolkit)
 exec --no-startup-id lxpolkit
 # set a default background if random background is disabled
 #exec --no-startup-id feh --bg-scale --no-xinerama ~/Pictures/Backgrounds/TripleMonitor/triple_rog_logo.jpg

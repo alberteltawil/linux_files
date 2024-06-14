@@ -147,4 +147,4 @@ show-icons: true;
 }
 //@theme "/usr/share/rofi/themes/Adapta-Nokto.rasi"
 //@theme "/usr/share/rofi/themes/glue_pro_blue.rasi"
-@theme "/home/lin/.config/rofi/nord.rasi"
+@theme "/home/eddie/.config/rofi/nord.rasi"
