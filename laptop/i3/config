@@ -33,15 +33,18 @@ exec --no-startup-id dex --autostart --environment i3
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
-exec --no-startup-id nm-applet
+# exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio.
 #set $refresh_i3volume killall -SIGUSR1 i3status
 set $refresh_i3volume pkill -SIGRTMIN+10 i3blocks
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3volume
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3volume
+set $volume_level dunstify --replace=4321 "    Volume: $(pactl list sinks | grep -A 15 'Sink #0' | grep '^[[:space:]]Volume:' | awk '{print $5}')"
+# set $notify_volume dunstify --replace=4321 "Volume" $($volume_level)
+
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3volume && $volume_level
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3volume && $volume_level
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3volume && $volume_level
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3volume && $volume_level
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -103,7 +106,7 @@ bindsym $mod+f fullscreen toggle
 # change container layout (stacked, tabbed, toggle split)
 #bindsym $mod+s layout stacking
 #bindsym $mod+w layout tabbed
-#bindsym $mod+e layout toggle split
+bindsym $mod+s layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -213,7 +216,7 @@ workspace_auto_back_and_forth yes
 title_align center
 
 # remove window title bar and set border
-default_border pixel 3
+default_border pixel 1
 
 # set default workspace layout mode for new containers/windows
 #workspace_layout stacking
@@ -247,9 +250,9 @@ bar {
 }
 
 # Gaps
-# gaps inner 15
+# gaps inner 10
 # gaps outer 0
-
+#
 # i3lock shortcut and background color
 #bindsym $mod+x exec i3lock -c 000000
 
@@ -292,4 +295,4 @@ exec --no-startup-id i3-msg restart
 #exec --no-startup-id feh --bg-scale --no-xinerama ~/Pictures/Background/TripleMonitor/triple_rog_logo.jpg
 
 # start picom window compositor
-#exec --no-startup-id picom --config ~/.config/picom/picom.conf
+exec --no-startup-id picom --config ~/.config/picom/picom.conf
