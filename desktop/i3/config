@@ -13,10 +13,11 @@ set $mod Mod4
 set $alt Mod1
 
 # set system border and border size for specific apps
-# Fix: brave browser shortcut apps do not conform to browser's
+# Fix: browser shortcut apps do not conform to browser's, 
+# use xprop in terminal to determine window class names
 # 	appearence setting of "use system border".
-for_window [class="Brave-browser"] border pixel 1
-for_window [class="crx_nngceckbapebfimnlniiiahkandclblb"] floating enable, move scratchpad, scratchpad show, focus
+for_window [class="Microsoft-edge"] border pixel 1
+# for_window [class="crx__gmjilpkmmdeiffdigidlcleniobjngnc"] floating enable, move scratchpad, scratchpad show, focus
 for_window [title="Bitwarden"] floating enable, move scratchpad, scratchpad show, focus
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -296,7 +297,7 @@ bindsym $mod+x exec i3lock -c 000000
 # custom app bindings
 bindsym Control+$alt+b exec brave-browser
 bindsym Control+$alt+c exec code --new-window --password-store="gnome-libsecret"
-bindsym Control+$alt+w exec brave-browser --profile-directory="Profile 1"
+bindsym Control+$alt+w exec microsoft-edge --profile-directory="Profile 1"
 bindsym Control+$alt+p exec brave-browser --profile-directory="Default"
 bindsym Control+$alt+f exec nemo
 bindsym $mod+Shift+Print exec --no-startup-id ksnip --rectarea
@@ -335,4 +336,4 @@ exec --no-startup-id lxpolkit
 #exec --no-startup-id feh --bg-scale --no-xinerama ~/Pictures/Backgrounds/TripleMonitor/triple_rog_logo.jpg
 
 # start picom window compositor
-# exec --no-startup-id picom --config ~/.config/picom/picom.conf
+exec --no-startup-id picom --config ~/.config/picom/picom.conf
